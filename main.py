@@ -4,7 +4,7 @@ from player import *
 
 def main():
     pygame.init()
-    pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
 
@@ -14,15 +14,15 @@ def main():
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 )
 
-    surf = pygame.display.get_surface()
-
     while True:
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
-        player.draw(surf)
+        screen.fill("black")
+        player.update(dt)
+        player.draw(screen)
 
         pygame.display.flip()
 
